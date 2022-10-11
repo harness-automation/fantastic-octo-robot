@@ -1,0 +1,51 @@
+pipeline:
+  name: remote pipeline
+  identifier: remote_pipeline
+  projectIdentifier: ishant
+  orgIdentifier: Archit
+  tags: {}
+  stages:
+    - stage:
+        name: deploy
+        identifier: deploy
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: ss222
+          environment:
+            environmentRef: dd
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: a112
+                inputs:
+                  identifier: a112
+                  type: KubernetesDirect
+                  spec:
+                    connectorRef: <+input>
+                    namespace: <+input>
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: shell
+                  identifier: shell
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo 1
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
