@@ -1,0 +1,22 @@
+inputSet:
+  name: set321_21feb
+  identifier: set321_21feb
+  orgIdentifier: default
+  projectIdentifier: TestAmit
+  pipeline:
+    identifier: testChild_123_21feb
+    stages:
+      - stage:
+          identifier: s1
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: ShellScript_1
+                    type: ShellScript
+                    spec:
+                      source:
+                        type: Inline
+                        spec:
+                          script: exit 1
