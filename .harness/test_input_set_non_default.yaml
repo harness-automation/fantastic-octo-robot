@@ -1,0 +1,22 @@
+inputSet:
+  name: test input set non default
+  identifier: test_input_set_non_default
+  orgIdentifier: default
+  projectIdentifier: TestAmit
+  pipeline:
+    identifier: testChild_123_21feb
+    stages:
+      - stage:
+          identifier: s1
+          type: Custom
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: ShellScript_1
+                    type: ShellScript
+                    spec:
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo 'hi'
